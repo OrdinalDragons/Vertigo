@@ -26,10 +26,15 @@ app.get('/api/health', (_req: Request, res: Response) => {
 });
 
 // Serve React app in production
-// Note: In production, consider adding rate limiting middleware
-// for security. See PERFORMANCE.md for implementation details.
+// TODO: Add rate limiting middleware before production deployment
+// See PERFORMANCE.md for express-rate-limit implementation
+// Example: app.use(rateLimit({ windowMs: 60000, max: 60 }))
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (_req: Request, res: Response) => {
+    // Static file serving - in production, consider:
+    // 1. Using a CDN for better performance
+    // 2. Implementing rate limiting to prevent abuse
+    // 3. Adding proper caching headers
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 }
@@ -38,3 +43,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
+
