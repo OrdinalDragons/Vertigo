@@ -26,6 +26,8 @@ app.get('/api/health', (_req: Request, res: Response) => {
 });
 
 // Serve React app in production
+// Note: In production, consider adding rate limiting middleware
+// for security. See PERFORMANCE.md for implementation details.
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (_req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));

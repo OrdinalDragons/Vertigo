@@ -100,6 +100,13 @@ Implement rate limiting for:
 - RPC calls to Solana
 - API endpoints
 - WebSocket connections
+- Static file serving (especially for user-uploaded content)
+
+**Recommended package**: `express-rate-limit`
+```bash
+npm install express-rate-limit
+```
+See PERFORMANCE.md for implementation examples.
 
 ### Authentication
 When implementing wallet authentication:

@@ -185,7 +185,45 @@ app.use('/assets', express.static('public', {
 }));
 ```
 
-3. **Connection Pooling for Database**
+3. **Rate Limiting**
+```typescript
+import rateLimit from 'express-rate-limit';
+
+// General API rate limiting
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Apply to API routes
+app.use('/api/', apiLimiter);
+
+// Stricter rate limiting for authentication endpoints
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5, // Only 5 requests per 15 minutes
+  skipSuccessfulRequests: true,
+});
+
+app.use('/api/auth/', authLimiter);
+
+// Rate limit for file serving (if needed)
+const staticLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 60, // 60 requests per minute
+});
+
+app.use(express.static('public', { 
+  maxAge: '1y',
+  immutable: true,
+  // Add rate limiting if serving user-uploaded content
+}));
+```
+
+4. **Connection Pooling for Database**
 ```typescript
 // Drizzle with connection pool
 import { drizzle } from 'drizzle-orm/node-postgres';
