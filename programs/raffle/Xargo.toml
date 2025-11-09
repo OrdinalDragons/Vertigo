@@ -1,0 +1,3 @@
+// Xargo.toml - Build configuration for Solana BPF programs
+[target.bpfel-unknown-unknown.dependencies.std]
+features = []

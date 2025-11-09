@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217.2 32.6% 17.5%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --popover-border: 217.2 32.6% 17.5%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 210 40% 98%;
+    --primary-border: linear-gradient(135deg, hsl(263 70% 50%), hsl(193 70% 50%));
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-border: linear-gradient(135deg, hsl(217.2 32.6% 17.5%), hsl(217.2 32.6% 25%));
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --muted-border: linear-gradient(135deg, hsl(217.2 32.6% 17.5%), hsl(217.2 32.6% 25%));
+    --accent: 193 70% 50%;
+    --accent-foreground: 210 40% 98%;
+    --accent-border: linear-gradient(135deg, hsl(193 70% 50%), hsl(263 70% 50%));
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --destructive-border: linear-gradient(135deg, hsl(0 62.8% 30.6%), hsl(0 62.8% 40%));
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263 70% 50%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 263 70% 50%;
+    --sidebar-primary: 263 70% 50%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-primary-border: linear-gradient(135deg, hsl(263 70% 50%), hsl(193 70% 50%));
+    --sidebar-accent: 193 70% 50%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-accent-border: linear-gradient(135deg, hsl(193 70% 50%), hsl(263 70% 50%));
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Georgia', serif;
+    --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

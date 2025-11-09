@@ -30,11 +30,57 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Performance optimizations
+    target: 'es2020',
+    minify: 'esbuild',
+    cssMinify: 'lightningcss',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunk for better caching
+          vendor: ['react', 'react-dom', 'wouter'],
+          // UI components chunk
+          ui: [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-popover',
+            '@radix-ui/react-select',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-toast',
+          ],
+          // Solana chunk (loaded only when needed)
+          solana: ['@solana/web3.js', '@solana/spl-token', '@metaplex-foundation/umi'],
+        },
+      },
+    },
+    // Enable source maps for production debugging (can be disabled for smaller builds)
+    sourcemap: false,
+    // Optimize chunk size warnings
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     fs: {
       strict: true,
       deny: ["**/.*"],
     },
+    // Performance optimizations
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      // Ignore node_modules to improve performance
+      ignored: ['**/node_modules/**', '**/dist/**'],
+    },
+  },
+  // Optimize dependency pre-bundling
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'wouter',
+      '@tanstack/react-query',
+    ],
+    exclude: ['@solana/web3.js', '@metaplex-foundation/umi'],
   },
 });
