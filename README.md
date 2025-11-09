@@ -12,17 +12,28 @@ This repository has been optimized for performance and security. See the optimiz
 - **[replit.md](replit.md)** - Project overview and architecture
 - **[design_guidelines.md](design_guidelines.md)** - UI/UX design system and guidelines
 
-### Performance & Security (NEW ✨)
-- **[OPTIMIZATION.md](OPTIMIZATION.md)** - 📊 **START HERE** - Complete summary of all optimizations
+### Performance & Security
+- **[OPTIMIZATION.md](OPTIMIZATION.md)** - 📊 Complete summary of all optimizations
 - **[PERFORMANCE.md](PERFORMANCE.md)** - 🚀 Comprehensive performance best practices guide
 - **[SECURITY.md](SECURITY.md)** - 🔒 Security vulnerabilities tracking and best practices
+
+### Solana Development (NEW ⚡)
+- **[SOLANA_SETUP.md](SOLANA_SETUP.md)** - 🔧 Complete guide for Rust, Cargo, Solana CLI, Anchor, and Metaplex setup
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+
+**For Frontend/Backend:**
 - Node.js 18+ 
 - npm or pnpm
 - PostgreSQL database (for production)
+
+**For Solana Development (optional):**
+- Rust 1.75.0+
+- Solana CLI 1.18.x+
+- Anchor Framework 0.30.0+
+- See [SOLANA_SETUP.md](SOLANA_SETUP.md) for detailed installation instructions
 
 ### Installation
 
@@ -84,9 +95,11 @@ Vertigo/
 - **PostgreSQL** - Database (Neon)
 
 ### Blockchain
-- **Solana Web3.js** - Solana integration
-- **SPL Token** - Token operations
-- **Metaplex** - NFT operations
+- **Solana Web3.js 1.98.4** - Solana integration (latest stable)
+- **SPL Token 0.4.14** - Token operations (latest stable)
+- **Metaplex Core 1.7.0** - NFT operations (new standard)
+- **Metaplex UMI** - Universal Module Interface
+- **Anchor Framework 0.30.1** - On-chain program development
 
 ## ✨ Key Features (Planned)
 
@@ -102,12 +115,22 @@ Vertigo/
 ### Available Scripts
 
 ```bash
+# Frontend/Backend
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run start    # Run production server
 npm run check    # TypeScript type checking
 npm run db:push  # Push database schema changes
+
+# Solana/Anchor (requires Rust + Anchor installed)
+npm run anchor:build      # Build Anchor program
+npm run anchor:test       # Run Anchor tests
+npm run anchor:deploy     # Deploy to configured cluster
+npm run anchor:localnet   # Start local Solana validator
+npm run anchor:clean      # Clean Anchor build artifacts
 ```
+
+**Note:** Anchor commands require Rust, Solana CLI, and Anchor Framework to be installed. See [SOLANA_SETUP.md](SOLANA_SETUP.md) for setup instructions.
 
 ### Performance Optimizations Applied
 

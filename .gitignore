@@ -36,3 +36,13 @@ lerna-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Anchor / Rust
+target/
+**/*.rs.bk
+.anchor
+test-ledger/
+.program-keypairs/
+
+# Solana
+.solana/
