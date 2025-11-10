@@ -58,6 +58,31 @@ npm run build
 npm start
 ```
 
+### Deployment to Vercel
+
+This project is configured for serverless deployment on Vercel:
+
+```bash
+# Install Vercel CLI (optional)
+npm i -g vercel
+
+# Deploy to Vercel
+vercel
+
+# Or connect your GitHub repository to Vercel for automatic deployments
+```
+
+The project includes:
+- `vercel.json` - Vercel configuration for serverless functions and static hosting
+- `api/index.ts` - Serverless function entry point for API routes
+- `vercel-build` script - Builds the frontend for deployment
+
+**How it works:**
+- Frontend is built to `dist/public` and served as static files
+- Backend runs as a serverless function at `/api/*`
+- All API routes are handled by the serverless function
+- Client-side routing is preserved for the SPA
+
 ## 📦 Project Structure
 
 ```
@@ -69,11 +94,14 @@ Vertigo/
 │   │   └── index.css # Tailwind styles
 │   └── index.html
 ├── server/           # Express backend
-│   └── index.ts      # Server entry point
+│   └── index.ts      # Server entry point (exports app for serverless)
+├── api/              # Vercel serverless functions
+│   └── index.ts      # API entry point for Vercel
 ├── shared/           # Shared types and utilities
 │   └── types.ts
 ├── db/               # Database schemas (Drizzle ORM)
-└── dist/             # Build output (gitignored)
+├── dist/             # Build output (gitignored)
+└── vercel.json       # Vercel deployment configuration
 ```
 
 ## 🎨 Tech Stack
@@ -117,7 +145,8 @@ Vertigo/
 ```bash
 # Frontend/Backend
 npm run dev      # Start development server
-npm run build    # Build for production
+npm run build    # Build for production (frontend + backend)
+npm run vercel-build  # Build for Vercel deployment (frontend only)
 npm run start    # Run production server
 npm run check    # TypeScript type checking
 npm run db:push  # Push database schema changes
